@@ -86,6 +86,7 @@ terraform destroy
 - Added a `name_prefix` local value (`project_name` + `environment`)
 - Tagged the S3 bucket with Environment, Project, Name, and ManagedBy
 - Bucket name is now derived: `aws-terraform-cloud-lab-dev-ynhtwe-2026`
+```
 Reorganize files
       ↓
 terraform init
@@ -103,7 +104,7 @@ terraform plan
 terraform apply
       ↓
 terraform destroy
-
+```
 ### Day 3 — Outputs and data sources
 
 - Added outputs for bucket name, environment, and AWS region
@@ -111,6 +112,7 @@ terraform destroy
   - `aws_caller_identity` to read the AWS account ID
   - `aws_availability_zones` to list AZs (needed soon for VPC/subnets)
 - Documented Terraform concepts and the `dev` environment in this README
+```
 VARIABLE
    ↓
 INPUT
@@ -130,3 +132,4 @@ READ AWS
 OUTPUT
    ↓
 SHOW USEFUL INFORMATION
+```
