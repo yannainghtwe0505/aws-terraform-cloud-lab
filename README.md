@@ -21,7 +21,26 @@ ap-northeast-1 (Tokyo)
 
 ## Architecture
 
-To be added.
+Network design for Day 4 is documented in [`docs/network-design.md`](docs/network-design.md).
+
+Planned flow:
+
+```
+Internet
+    |
+    v
+   ALB
+    |
+    v
+Private EC2
+    |
+    v
+Private RDS
+```
+
+- VPC CIDR: `10.0.0.0/16`
+- Two Availability Zones
+- Public subnets (ALB) and private subnets (EC2, RDS)
 
 ## Terraform
 
@@ -132,4 +151,17 @@ READ AWS
 OUTPUT
    ↓
 SHOW USEFUL INFORMATION
+```
+
+### Day 4 — Network design document
+
+- Created `docs/network-design.md`
+- Documented VPC `10.0.0.0/16` in `ap-northeast-1` (Tokyo)
+- Planned two AZs with public and private subnets
+- Defined routing (IGW for public, optional NAT for private)
+- Defined security path: Internet → ALB → EC2 → RDS
+
+```
+docs/
+└── network-design.md
 ```
