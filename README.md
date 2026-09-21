@@ -153,15 +153,24 @@ OUTPUT
 SHOW USEFUL INFORMATION
 ```
 
-### Day 4 — Network design document
+### Day 4 — Network design and VPC foundation
 
 - Created `docs/network-design.md`
 - Documented VPC `10.0.0.0/16` in `ap-northeast-1` (Tokyo)
 - Planned two AZs with public and private subnets
 - Defined routing (IGW for public, optional NAT for private)
 - Defined security path: Internet → ALB → EC2 → RDS
+- Implemented VPC, Internet Gateway, public/private subnets, and route tables in Terraform
 
 ```
 docs/
 └── network-design.md
+
+10.0.0.0/16
+│
+├── 10.0.1.0/24  Public A
+├── 10.0.2.0/24  Public B
+│
+├── 10.0.11.0/24 Private A
+└── 10.0.12.0/24 Private B
 ```
