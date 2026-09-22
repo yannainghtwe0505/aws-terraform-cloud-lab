@@ -174,3 +174,26 @@ docs/
 ├── 10.0.11.0/24 Private A
 └── 10.0.12.0/24 Private B
 ```
+
+### Day 6 — Security groups
+
+- Created `terraform/environments/dev/security-groups.tf`
+- ALB SG: allow HTTP 80 and HTTPS 443 from the internet
+- EC2 SG: allow TCP 8080 only from the ALB security group
+- RDS SG: allow PostgreSQL 5432 only from the EC2 security group
+
+```
+Internet
+   │
+   ├── TCP 80 / 443
+   ▼
+ ALB-SG
+   │
+   └── TCP 8080
+   ▼
+ EC2-SG
+   │
+   └── TCP 5432
+   ▼
+ RDS-SG
+```
