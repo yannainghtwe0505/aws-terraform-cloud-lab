@@ -101,3 +101,37 @@ Public subnets use a route table containing:
 Private subnets currently have no direct route to the Internet Gateway.
 
 NAT Gateway will be added later when required.
+
+## Security Groups
+
+### ALB Security Group
+
+Inbound:
+
+- TCP 80 from 0.0.0.0/0
+- TCP 443 from 0.0.0.0/0
+
+### EC2 Security Group
+
+Inbound:
+
+- TCP 8080 from ALB Security Group
+
+### RDS Security Group
+
+Inbound:
+
+- TCP 5432 from EC2 Security Group
+
+## Security Flow
+
+Internet
+→ ALB
+
+ALB
+→ EC2
+
+EC2
+→ RDS
+
+Direct internet access to EC2 and RDS is not allowed by these rules.
