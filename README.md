@@ -153,7 +153,7 @@ OUTPUT
 SHOW USEFUL INFORMATION
 ```
 
-### Day 4 — Network design and VPC foundation
+### Day 4 And 5 — Network design and VPC foundation
 
 - Created `docs/network-design.md`
 - Documented VPC `10.0.0.0/16` in `ap-northeast-1` (Tokyo)
