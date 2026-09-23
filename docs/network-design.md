@@ -135,3 +135,20 @@ EC2
 → RDS
 
 Direct internet access to EC2 and RDS is not allowed by these rules.
+
+## Compute
+
+An EC2 application server is deployed into a private subnet.
+
+The EC2 instance:
+
+- Does not have a public IP address.
+- Uses the EC2 Security Group.
+- Uses an IAM Role through an Instance Profile.
+- Is intended to host the Spring Boot application later.
+
+## IAM
+
+The EC2 instance uses an IAM Role rather than static AWS access keys.
+
+The project follows the principle of least privilege.
