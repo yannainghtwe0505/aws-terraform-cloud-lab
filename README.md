@@ -197,3 +197,10 @@ Internet
    ▼
  RDS-SG
 ```
+
+### Day 7 — Private EC2 and IAM
+
+- Created `iam.tf` with an EC2 IAM role (trust policy for `ec2.amazonaws.com`) and instance profile
+- Created `ec2.tf` with a private Amazon Linux 2023 instance (`t3.micro`, no public IP)
+- AMI looked up dynamically via SSM Parameter Store
+- User Data only writes `/opt/app/status.txt` (no `dnf` yet — no NAT Gateway)

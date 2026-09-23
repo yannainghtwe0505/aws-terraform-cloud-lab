@@ -52,3 +52,18 @@ output "rds_security_group_id" {
   description = "Security Group ID for the database"
   value       = aws_security_group.rds.id
 }
+
+output "ec2_instance_id" {
+  description = "ID of the application EC2 instance"
+  value       = aws_instance.app.id
+}
+
+output "ec2_private_ip" {
+  description = "Private IP address of the application EC2"
+  value       = aws_instance.app.private_ip
+}
+
+output "ec2_private_dns" {
+  description = "Private DNS name of the application EC2"
+  value       = aws_instance.app.private_dns
+}
