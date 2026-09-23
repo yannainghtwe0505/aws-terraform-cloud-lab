@@ -8,6 +8,10 @@ data "aws_availability_zones" "available" {
   state = "available"
 }
 
+data "aws_ssm_parameter" "amazon_linux_ami" {
+  name = "/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-x86_64"
+}
+
 resource "aws_s3_bucket" "lab" {
   bucket = "${local.name_prefix}-ynhtwe-2026"
 

@@ -27,3 +27,8 @@ variable "private_subnet_cidrs" {
   description = "CIDR blocks for private subnets"
   type        = list(string)
 }
+
+variable "instance_type" {
+  description = "EC2 instance type"
+  type        = string
+}
