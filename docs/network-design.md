@@ -152,3 +152,19 @@ The EC2 instance:
 The EC2 instance uses an IAM Role rather than static AWS access keys.
 
 The project follows the principle of least privilege.
+
+## Private EC2 Management
+
+The application EC2 instance does not have a public IP address.
+
+AWS Systems Manager Session Manager is used for administrative access.
+
+VPC Interface Endpoints provide private connectivity from the EC2 instance to Systems Manager services.
+
+Required endpoints:
+
+- SSM
+- SSMMessages
+- EC2Messages
+
+The EC2 instance uses the AmazonSSMManagedInstanceCore IAM policy.
