@@ -204,3 +204,9 @@ Internet
 - Created `ec2.tf` with a private Amazon Linux 2023 instance (`t3.micro`, no public IP)
 - AMI looked up dynamically via SSM Parameter Store
 - User Data only writes `/opt/app/status.txt` (no `dnf` yet — no NAT Gateway)
+
+### Day 8 — SSM access via VPC endpoints
+
+- Attached `AmazonSSMManagedInstanceCore` to the EC2 IAM role
+- Created `vpc-endpoints.tf` with a VPC endpoint security group (HTTPS from EC2-SG only)
+- Added Interface VPC endpoints for `ssm`, `ssmmessages`, and `ec2messages` in Private Subnet A
