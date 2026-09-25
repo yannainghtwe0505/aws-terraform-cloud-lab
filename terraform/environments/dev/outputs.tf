@@ -67,3 +67,17 @@ output "ec2_private_dns" {
   description = "Private DNS name of the application EC2"
   value       = aws_instance.app.private_dns
 }
+
+output "ssm_endpoint_ids" {
+  description = "IDs of the Systems Manager VPC endpoints"
+  value = {
+    ssm         = aws_vpc_endpoint.ssm.id
+    ssmmessages = aws_vpc_endpoint.ssmmessages.id
+    ec2messages = aws_vpc_endpoint.ec2messages.id
+  }
+}
+
+output "vpce_security_group_id" {
+  description = "Security Group ID for VPC interface endpoints"
+  value       = aws_security_group.vpce.id
+}
