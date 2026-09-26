@@ -210,3 +210,8 @@ Internet
 - Attached `AmazonSSMManagedInstanceCore` to the EC2 IAM role
 - Created `vpc-endpoints.tf` with a VPC endpoint security group (HTTPS from EC2-SG only)
 - Added Interface VPC endpoints for `ssm`, `ssmmessages`, and `ec2messages` in Private Subnet A
+
+### Day 9 — NAT Gateway for private outbound access
+
+- Created `nat.tf` with an Elastic IP and NAT Gateway in Public Subnet A
+- Added private route `0.0.0.0/0 → NAT Gateway` (existing private subnet associations reused)

@@ -98,9 +98,13 @@ Public subnets use a route table containing:
 
 ### Private Routing
 
-Private subnets currently have no direct route to the Internet Gateway.
+Private subnets use a route table containing:
 
-NAT Gateway will be added later when required.
+0.0.0.0/0 → NAT Gateway
+
+The NAT Gateway lives in a public subnet and uses an Elastic IP for outbound internet access.
+
+Private instances still have no inbound path from the internet.
 
 ## Security Groups
 
