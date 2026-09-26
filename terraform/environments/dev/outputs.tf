@@ -81,3 +81,13 @@ output "vpce_security_group_id" {
   description = "Security Group ID for VPC interface endpoints"
   value       = aws_security_group.vpce.id
 }
+
+output "nat_gateway_id" {
+  description = "ID of the NAT Gateway"
+  value       = aws_nat_gateway.main.id
+}
+
+output "nat_eip" {
+  description = "Elastic IP address used by the NAT Gateway"
+  value       = aws_eip.nat.public_ip
+}
