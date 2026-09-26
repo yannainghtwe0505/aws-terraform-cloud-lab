@@ -21,7 +21,16 @@ ap-northeast-1 (Tokyo)
 
 ## Architecture
 
-Network design for Day 4 is documented in [`docs/network-design.md`](docs/network-design.md).
+Network design notes: [`docs/network-design.md`](docs/network-design.md)
+
+Architecture diagrams (Mermaid + SVG):
+
+| Topic | Doc |
+| --- | --- |
+| Full overview | [`docs/architecture/overview.md`](docs/architecture/overview.md) |
+| VPC routing | [`docs/vpc/vpc-routing.md`](docs/vpc/vpc-routing.md) |
+| NAT Gateway | [`docs/networking/nat-gateway.md`](docs/networking/nat-gateway.md) |
+| Security Groups | [`docs/security/security-groups.md`](docs/security/security-groups.md) |
 
 Planned flow:
 
@@ -40,7 +49,8 @@ Private RDS
 
 - VPC CIDR: `10.0.0.0/16`
 - Two Availability Zones
-- Public subnets (ALB) and private subnets (EC2, RDS)
+- Public subnets (ALB / NAT) and private subnets (EC2, future RDS)
+- Private outbound via NAT Gateway; admin access via SSM Session Manager
 
 ## Terraform
 
