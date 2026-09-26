@@ -172,3 +172,19 @@ Required endpoints:
 - EC2Messages
 
 The EC2 instance uses the AmazonSSMManagedInstanceCore IAM policy.
+
+## NAT Gateway
+
+Private subnets use a NAT Gateway for outbound internet access.
+
+The NAT Gateway is deployed in a public subnet and uses an Elastic IP.
+
+Traffic flow:
+
+Private EC2
+→ Private Route Table
+→ NAT Gateway
+→ Internet Gateway
+→ Internet
+
+The EC2 instance does not have a public IP and cannot be directly accessed from the internet.
