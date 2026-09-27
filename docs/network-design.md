@@ -188,3 +188,23 @@ Private EC2
 → Internet
 
 The EC2 instance does not have a public IP and cannot be directly accessed from the internet.
+
+## Application Load Balancer
+
+An internet-facing Application Load Balancer is deployed across two public subnets.
+
+The ALB listens on HTTP port 80 and forwards traffic to the application target group on port 8080.
+
+The application EC2 instance remains in a private subnet and does not have a public IP address.
+
+Traffic flow:
+
+Internet
+→ ALB :80
+→ Target Group
+→ Private EC2 :8080
+
+Security:
+
+- ALB allows HTTP/HTTPS from the internet.
+- EC2 allows port 8080 only from the ALB Security Group.
