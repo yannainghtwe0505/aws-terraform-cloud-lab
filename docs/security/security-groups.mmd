@@ -1,0 +1,14 @@
+flowchart TB
+  Internet(("Internet"))
+
+  subgraph SGs["Security Groups"]
+    ALB_SG["ALB-SG<br/>in: 80/443 from 0.0.0.0/0<br/>out: all"]
+    EC2_SG["EC2-SG<br/>in: 8080 from ALB-SG<br/>out: all"]
+    RDS_SG["RDS-SG<br/>in: 5432 from EC2-SG<br/>out: all"]
+    VPCE_SG["VPCE-SG<br/>in: 443 from EC2-SG<br/>out: all"]
+  end
+
+  Internet -->|"TCP 80 / 443"| ALB_SG
+  ALB_SG -->|"TCP 8080"| EC2_SG
+  EC2_SG -->|"TCP 5432"| RDS_SG
+  EC2_SG -->|"TCP 443"| VPCE_SG

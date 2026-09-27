@@ -1,0 +1,11 @@
+flowchart LR
+  PrivateEC2["Private EC2<br/>10.0.11.0/24<br/>no public IP"]
+  PrivateRT["Private Route Table<br/>0.0.0.0/0 → NAT"]
+  NAT["NAT Gateway<br/>Public Subnet A<br/>+ Elastic IP"]
+  IGW["Internet Gateway"]
+  Internet(("Internet"))
+
+  PrivateEC2 -->|"outbound only"| PrivateRT
+  PrivateRT --> NAT
+  NAT --> IGW
+  IGW --> Internet

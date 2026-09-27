@@ -1,0 +1,45 @@
+flowchart TB
+  Internet(("Internet"))
+
+  subgraph Region["ap-northeast-1 · aws-terraform-cloud-lab-dev"]
+    subgraph VPC["VPC 10.0.0.0/16 · DNS support/hostnames on"]
+      IGW["Internet Gateway"]
+      NAT["NAT Gateway + EIP<br/>Public Subnet A"]
+
+      subgraph Public["Public Subnets"]
+        PubA["10.0.1.0/24 AZ-A<br/>ALB planned · NAT"]
+        PubB["10.0.2.0/24 AZ-B<br/>ALB planned"]
+      end
+
+      subgraph Private["Private Subnets"]
+        PrivA["10.0.11.0/24 AZ-A"]
+        PrivB["10.0.12.0/24 AZ-B"]
+        EC2["EC2 t3.micro<br/>Amazon Linux 2023<br/>no public IP"]
+        VPCE["Interface VPCEs<br/>ssm · ssmmessages · ec2messages"]
+      end
+
+      ALBSG["ALB-SG"]
+      EC2SG["EC2-SG"]
+      RDSSG["RDS-SG planned"]
+      VPCESG["VPCE-SG"]
+    end
+
+    IAM["IAM Role + Instance Profile<br/>AmazonSSMManagedInstanceCore"]
+    S3["S3 lab bucket"]
+    SSM["Systems Manager"]
+  end
+
+  Internet <-->|public 80/443 planned| ALBSG
+  ALBSG -.->|8080 planned| EC2SG
+  EC2SG -.->|5432 planned| RDSSG
+  Internet --> IGW
+  PubA --> IGW
+  PubB --> IGW
+  NAT --> IGW
+  EC2 --> NAT
+  EC2 --> VPCESG
+  VPCESG --> VPCE
+  VPCE --> SSM
+  EC2 --- EC2SG
+  EC2 --- IAM
+  S3 --- Region
