@@ -91,3 +91,18 @@ output "nat_eip" {
   description = "Elastic IP address used by the NAT Gateway"
   value       = aws_eip.nat.public_ip
 }
+
+output "alb_id" {
+  description = "Application Load Balancer ID"
+  value       = aws_lb.app.id
+}
+
+output "alb_dns_name" {
+  description = "DNS name of the Application Load Balancer"
+  value       = aws_lb.app.dns_name
+}
+
+output "target_group_arn" {
+  description = "ARN of the application target group"
+  value       = aws_lb_target_group.app.arn
+}
