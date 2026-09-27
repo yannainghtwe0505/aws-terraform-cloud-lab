@@ -225,3 +225,10 @@ Internet
 
 - Created `nat.tf` with an Elastic IP and NAT Gateway in Public Subnet A
 - Added private route `0.0.0.0/0 → NAT Gateway` (existing private subnet associations reused)
+
+### Day 10 — Application Load Balancer
+
+- Created `alb.tf` with a public ALB across both public subnets
+- Target group on port 8080 with HTTP health checks; EC2 registered as a target
+- HTTP listener on port 80 forwards to the target group
+- Updated EC2 User Data to install `python3` (via NAT) and run a demo HTTP server on `:8080`
