@@ -232,3 +232,9 @@ Internet
 - Target group on port 8080 with HTTP health checks; EC2 registered as a target
 - HTTP listener on port 80 forwards to the target group
 - Updated EC2 User Data to install `python3` (via NAT) and run a demo HTTP server on `:8080`
+
+### Day 11 — Private PostgreSQL RDS
+
+- Created `rds.tf` with RDS security group (PostgreSQL 5432 from EC2-SG only), DB subnet group, and `db.t4g.micro` PostgreSQL 17
+- `publicly_accessible = false`; password via gitignored `secrets.auto.tfvars` (see `secrets.auto.tfvars.example`)
+- Outputs: `rds_endpoint`, `rds_port`, `rds_database_name` (password is not outputted)
