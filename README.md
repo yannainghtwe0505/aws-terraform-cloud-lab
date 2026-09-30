@@ -244,3 +244,10 @@ Internet
 - Created `secrets.tf` with a Secrets Manager secret + version (username, password, host, port, database)
 - Added sensitive `db_username` variable; credentials stay in gitignored `secrets.auto.tfvars`
 - IAM policy grants EC2 role only `secretsmanager:GetSecretValue` on that secret ARN
+
+### Day 13 — First Terraform module (VPC)
+
+- Created `terraform/modules/vpc/` with reusable VPC, subnets, IGW, and route tables
+- Scaffolded empty `modules/security_groups/` and `modules/ec2/` for later days
+- `environments/dev` now calls `module "vpc"` and consumes `module.vpc.vpc_id` / subnet outputs
+- Used `moved` blocks so existing AWS resources are not recreated

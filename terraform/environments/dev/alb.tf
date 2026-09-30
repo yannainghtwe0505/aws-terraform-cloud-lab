@@ -8,8 +8,8 @@ resource "aws_lb" "app" {
   ]
 
   subnets = [
-    aws_subnet.public[0].id,
-    aws_subnet.public[1].id
+    module.vpc.public_subnet_ids[0],
+    module.vpc.public_subnet_ids[1]
   ]
 
   tags = {
@@ -26,7 +26,7 @@ resource "aws_lb_target_group" "app" {
   port     = 8080
   protocol = "HTTP"
 
-  vpc_id = aws_vpc.main.id
+  vpc_id = module.vpc.vpc_id
 
   target_type = "instance"
 

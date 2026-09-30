@@ -7,7 +7,7 @@ moved {
 resource "aws_security_group" "rds" {
   name        = "${local.name_prefix}-rds-sg"
   description = "Security group for PostgreSQL RDS"
-  vpc_id      = aws_vpc.main.id
+  vpc_id      = module.vpc.vpc_id
 
   tags = {
     Name        = "${local.name_prefix}-rds-sg"
@@ -38,8 +38,8 @@ resource "aws_db_subnet_group" "app" {
   name = "${local.name_prefix}-db-subnet-group"
 
   subnet_ids = [
-    aws_subnet.private[0].id,
-    aws_subnet.private[1].id
+    module.vpc.private_subnet_ids[0],
+    module.vpc.private_subnet_ids[1]
   ]
 
   tags = {
