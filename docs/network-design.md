@@ -208,3 +208,18 @@ Security:
 
 - ALB allows HTTP/HTTPS from the internet.
 - EC2 allows port 8080 only from the ALB Security Group.
+
+## Database Architecture
+
+The PostgreSQL RDS instance is deployed privately using a DB subnet group containing private subnets across multiple Availability Zones.
+
+The RDS instance is not publicly accessible.
+
+Only the application EC2 Security Group can access PostgreSQL on TCP port 5432.
+
+Traffic flow:
+
+Internet
+→ ALB :80
+→ EC2 :8080
+→ RDS :5432
