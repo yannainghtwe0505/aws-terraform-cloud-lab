@@ -106,3 +106,18 @@ output "target_group_arn" {
   description = "ARN of the application target group"
   value       = aws_lb_target_group.app.arn
 }
+
+output "rds_endpoint" {
+  description = "RDS PostgreSQL endpoint"
+  value       = aws_db_instance.postgres.address
+}
+
+output "rds_port" {
+  description = "RDS PostgreSQL port"
+  value       = aws_db_instance.postgres.port
+}
+
+output "rds_database_name" {
+  description = "Application database name"
+  value       = aws_db_instance.postgres.db_name
+}
