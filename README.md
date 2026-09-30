@@ -251,3 +251,4 @@ Internet
 - Scaffolded empty `modules/security_groups/` and `modules/ec2/` for later days
 - `environments/dev` now calls `module "vpc"` and consumes `module.vpc.vpc_id` / subnet outputs
 - Used `moved` blocks so existing AWS resources are not recreated
+- Documented module purpose and I/O in [`docs/terraform-modules.md`](docs/terraform-modules.md)
