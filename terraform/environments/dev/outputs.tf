@@ -121,3 +121,8 @@ output "rds_database_name" {
   description = "Application database name"
   value       = aws_db_instance.postgres.db_name
 }
+
+output "database_secret_arn" {
+  description = "ARN of the database secret"
+  value       = aws_secretsmanager_secret.db.arn
+}
