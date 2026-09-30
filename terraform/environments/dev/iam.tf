@@ -42,3 +42,29 @@ resource "aws_iam_role_policy_attachment" "ssm" {
   role       = aws_iam_role.ec2.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
 }
+
+resource "aws_iam_policy" "secrets_manager_read" {
+  name        = "${local.name_prefix}-secrets-manager-read"
+  description = "Allow EC2 to read the application database secret"
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+
+    Statement = [
+      {
+        Effect = "Allow"
+
+        Action = [
+          "secretsmanager:GetSecretValue"
+        ]
+
+        Resource = aws_secretsmanager_secret.db.arn
+      }
+    ]
+  })
+}
+
+resource "aws_iam_role_policy_attachment" "secrets_manager_read" {
+  role       = aws_iam_role.ec2.name
+  policy_arn = aws_iam_policy.secrets_manager_read.arn
+}

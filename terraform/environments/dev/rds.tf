@@ -62,7 +62,7 @@ resource "aws_db_instance" "postgres" {
   storage_type      = "gp3"
 
   db_name  = "appdb"
-  username = "appuser"
+  username = var.db_username
   password = var.db_password
 
   db_subnet_group_name   = aws_db_subnet_group.app.name

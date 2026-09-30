@@ -238,3 +238,9 @@ Internet
 - Created `rds.tf` with RDS security group (PostgreSQL 5432 from EC2-SG only), DB subnet group, and `db.t4g.micro` PostgreSQL 17
 - `publicly_accessible = false`; password via gitignored `secrets.auto.tfvars` (see `secrets.auto.tfvars.example`)
 - Outputs: `rds_endpoint`, `rds_port`, `rds_database_name` (password is not outputted)
+
+### Day 12 — Secrets Manager for database credentials
+
+- Created `secrets.tf` with a Secrets Manager secret + version (username, password, host, port, database)
+- Added sensitive `db_username` variable; credentials stay in gitignored `secrets.auto.tfvars`
+- IAM policy grants EC2 role only `secretsmanager:GetSecretValue` on that secret ARN

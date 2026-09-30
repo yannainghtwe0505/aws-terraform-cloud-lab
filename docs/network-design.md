@@ -223,3 +223,17 @@ Internet
 → ALB :80
 → EC2 :8080
 → RDS :5432
+
+## Secrets Management
+
+Database credentials are stored in AWS Secrets Manager.
+
+The application EC2 instance uses an IAM role to retrieve the database secret.
+
+The EC2 IAM policy grants only:
+
+secretsmanager:GetSecretValue
+
+for the specific database secret.
+
+The database itself remains private and is accessible from the EC2 Security Group on TCP port 5432.
