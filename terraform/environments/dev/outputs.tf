@@ -19,23 +19,23 @@ output "aws_account_id" {
 }
 
 output "vpc_id" {
-  description = "ID of the VPC"
-  value       = aws_vpc.main.id
+  description = "ID of the development VPC"
+  value       = module.vpc.vpc_id
 }
 
 output "public_subnet_ids" {
   description = "IDs of the public subnets"
-  value       = aws_subnet.public[*].id
+  value       = module.vpc.public_subnet_ids
 }
 
 output "private_subnet_ids" {
   description = "IDs of the private subnets"
-  value       = aws_subnet.private[*].id
+  value       = module.vpc.private_subnet_ids
 }
 
 output "availability_zones" {
   description = "Availability Zones used by the environment"
-  value       = data.aws_availability_zones.available.names
+  value       = module.vpc.availability_zones
 }
 
 output "alb_security_group_id" {

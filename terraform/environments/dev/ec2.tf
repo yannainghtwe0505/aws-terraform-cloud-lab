@@ -3,7 +3,7 @@ resource "aws_instance" "app" {
 
   instance_type = var.instance_type
 
-  subnet_id = aws_subnet.private[0].id
+  subnet_id = module.vpc.private_subnet_ids[0]
 
   vpc_security_group_ids = [
     aws_security_group.ec2.id
