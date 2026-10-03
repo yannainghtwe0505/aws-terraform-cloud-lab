@@ -252,3 +252,10 @@ Internet
 - `environments/dev` now calls `module "vpc"` and consumes `module.vpc.vpc_id` / subnet outputs
 - Used `moved` blocks so existing AWS resources are not recreated
 - Documented module purpose and I/O in [`docs/terraform-modules.md`](docs/terraform-modules.md)
+
+### Day 14 — Terraform remote state
+
+- Configured the dev environment to store Terraform state in S3 at `dev/terraform.tfstate`
+- Enabled S3-native state locking and encryption in `backend.tf`
+- Documented the backend, state location, locking, and security in [`docs/terraform-state.md`](docs/terraform-state.md)
+- Like the modules introduced on Day 13, the remote backend keeps Terraform setup organized; unlike the VPC module, it changes where Terraform stores and locks state
