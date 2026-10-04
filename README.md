@@ -272,3 +272,8 @@ Internet
 - Used `for` expressions in `loops.tf` to transform environment names, map descriptions, and filter application ports
 - Exposed the computed values through Terraform outputs
 - Documented `count`, `for_each`, transformations, and filtering in [`docs/terraform-loops.md`](docs/terraform-loops.md)
+
+### Day 17 — Terraform objects and dynamic blocks
+
+- Practiced structured security-rule objects, typed `list(object(...))` variables, and `for` expressions that transform rules into names and maps
+- Documented dynamic blocks and when to use them in [`docs/terraform-dynamic-blocks.md`](docs/terraform-dynamic-blocks.md)

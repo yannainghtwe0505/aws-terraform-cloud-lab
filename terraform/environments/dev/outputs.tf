@@ -23,6 +23,21 @@ output "application_ports" {
   value       = local.application_ports
 }
 
+output "security_rules" {
+  description = "Security rules used in the dynamic block exercise"
+  value       = local.security_rules
+}
+
+output "application_rule_names" {
+  description = "Application rule names"
+  value       = local.application_rule_names
+}
+
+output "application_rule_map" {
+  description = "Application rules converted to a map"
+  value       = local.application_rule_map
+}
+
 output "aws_region" {
   description = "AWS region used by this environment"
   value       = data.aws_region.current.region

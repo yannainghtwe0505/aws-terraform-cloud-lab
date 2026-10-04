@@ -44,3 +44,29 @@ variable "db_username" {
   type        = string
   sensitive   = true
 }
+
+variable "security_rules" {
+  description = "Security group ingress rules"
+
+  type = list(object({
+    port        = number
+    protocol    = string
+    description = string
+    cidr_blocks = list(string)
+  }))
+
+  default = [
+    {
+      port        = 80
+      protocol    = "tcp"
+      description = "HTTP"
+      cidr_blocks = ["0.0.0.0/0"]
+    },
+    {
+      port        = 443
+      protocol    = "tcp"
+      description = "HTTPS"
+      cidr_blocks = ["0.0.0.0/0"]
+    }
+  ]
+}
