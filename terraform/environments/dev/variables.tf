@@ -6,6 +6,15 @@ variable "aws_region" {
 variable "environment" {
   description = "Environment name"
   type        = string
+
+  validation {
+    condition = contains(
+      ["dev", "staging", "prod"],
+      var.environment
+    )
+
+    error_message = "Environment must be dev, staging, or prod."
+  }
 }
 
 variable "project_name" {
@@ -69,4 +78,10 @@ variable "security_rules" {
       cidr_blocks = ["0.0.0.0/0"]
     }
   ]
+}
+
+variable "optional_app_name" {
+  description = "Optional application name"
+  type        = string
+  default     = null
 }

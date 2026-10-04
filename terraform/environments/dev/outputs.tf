@@ -38,6 +38,41 @@ output "application_rule_map" {
   value       = local.application_rule_map
 }
 
+output "dev_instance_size" {
+  description = "Instance size for development"
+  value       = local.dev_instance_size
+}
+
+output "recommended_instance_size" {
+  description = "Recommended instance size for the current environment"
+  value       = local.recommended_instance_size
+}
+
+output "application_port" {
+  description = "Application port with fallback value"
+  value       = local.application_port
+}
+
+output "final_app_name" {
+  description = "Application name with fallback value"
+  value       = local.final_app_name
+}
+
+output "is_supported_environment" {
+  description = "Whether the environment is supported"
+  value       = local.is_supported_environment
+}
+
+output "environment_status" {
+  description = "Environment support status"
+  value       = local.environment_status
+}
+
+output "selected_instance_size" {
+  description = "Instance size selected for the current environment"
+  value       = local.selected_instance_size
+}
+
 output "aws_region" {
   description = "AWS region used by this environment"
   value       = data.aws_region.current.region
