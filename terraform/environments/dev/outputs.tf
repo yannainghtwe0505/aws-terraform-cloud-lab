@@ -10,12 +10,22 @@ output "environment" {
 
 output "aws_region" {
   description = "AWS region used by this environment"
-  value       = var.aws_region
+  value       = data.aws_region.current.region
 }
 
 output "aws_account_id" {
-  description = "AWS account ID"
+  description = "AWS account ID used by Terraform"
   value       = data.aws_caller_identity.current.account_id
+}
+
+output "available_azs" {
+  description = "Availability Zones available in the current region"
+  value       = data.aws_availability_zones.available.names
+}
+
+output "selected_availability_zones" {
+  description = "Availability Zones selected for the environment"
+  value       = local.availability_zones
 }
 
 output "vpc_id" {

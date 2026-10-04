@@ -259,3 +259,10 @@ Internet
 - Enabled S3-native state locking and encryption in `backend.tf`
 - Documented the backend, state location, locking, and security in [`docs/terraform-state.md`](docs/terraform-state.md)
 - Like the modules introduced on Day 13, the remote backend keeps Terraform setup organized; unlike the VPC module, it changes where Terraform stores and locks state
+
+### Day 15 — Terraform data sources
+
+- Added data sources for the current AWS account, region, and available Availability Zones in `data.tf`
+- Selected two AZs with a local value and exposed the account, region, and AZ information through outputs
+- Documented how data sources differ from managed resources in [`docs/terraform-data-sources.md`](docs/terraform-data-sources.md)
+- Builds on the data-source introduction from Day 3 and complements the reusable VPC module implemented on Day 13
