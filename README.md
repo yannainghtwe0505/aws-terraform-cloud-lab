@@ -266,3 +266,9 @@ Internet
 - Selected two AZs with a local value and exposed the account, region, and AZ information through outputs
 - Documented how data sources differ from managed resources in [`docs/terraform-data-sources.md`](docs/terraform-data-sources.md)
 - Builds on the data-source introduction from Day 3 and complements the reusable VPC module implemented on Day 13
+
+### Day 16 — Terraform loops and expressions
+
+- Used `for` expressions in `loops.tf` to transform environment names, map descriptions, and filter application ports
+- Exposed the computed values through Terraform outputs
+- Documented `count`, `for_each`, transformations, and filtering in [`docs/terraform-loops.md`](docs/terraform-loops.md)

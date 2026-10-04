@@ -8,6 +8,21 @@ output "environment" {
   value       = var.environment
 }
 
+output "environment_upper" {
+  description = "Environment names converted to uppercase"
+  value       = local.environment_upper
+}
+
+output "environment_descriptions" {
+  description = "Environment descriptions"
+  value       = local.environment_descriptions
+}
+
+output "application_ports" {
+  description = "Application ports above 100"
+  value       = local.application_ports
+}
+
 output "aws_region" {
   description = "AWS region used by this environment"
   value       = data.aws_region.current.region

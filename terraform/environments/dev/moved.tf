@@ -1,8 +1,4 @@
 # Preserve existing state addresses after moving VPC resources into the module.
-moved {
-  from = data.aws_availability_zones.available
-  to   = module.vpc.data.aws_availability_zones.available
-}
 
 moved {
   from = aws_vpc.main
