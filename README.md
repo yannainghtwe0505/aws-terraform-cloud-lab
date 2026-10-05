@@ -277,3 +277,8 @@ Internet
 
 - Practiced structured security-rule objects, typed `list(object(...))` variables, and `for` expressions that transform rules into names and maps
 - Documented dynamic blocks and when to use them in [`docs/terraform-dynamic-blocks.md`](docs/terraform-dynamic-blocks.md)
+
+### Day 18 — Terraform expressions
+
+- Practiced `lookup`, conditional expressions, `try`, `coalesce`, and `contains` using environment and application settings
+- Added environment validation, an optional application name, and outputs for the computed values
