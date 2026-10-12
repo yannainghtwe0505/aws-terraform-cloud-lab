@@ -292,3 +292,8 @@ Internet
 
 - Used `terraform_data` resources in `lifecycle.tf` to practice explicit dependencies with `depends_on` without creating additional AWS infrastructure
 - Added examples of `create_before_destroy`, `prevent_destroy`, and `ignore_changes`, plus outputs for configuration and deployment resource IDs
+
+### Day 21 — Structured application configuration module
+
+- Created an `application_config` module with a typed object input, optional tags, merged default tags, and reusable configuration outputs
+- Called the module from `dev` and added validation for ports between 1 and 65535 and non-empty application names

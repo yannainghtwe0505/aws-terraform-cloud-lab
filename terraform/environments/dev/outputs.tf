@@ -48,7 +48,7 @@ output "recommended_instance_size" {
   value       = local.recommended_instance_size
 }
 
-output "application_port" {
+output "application_port_fallback" {
   description = "Application port with fallback value"
   value       = local.application_port
 }
@@ -265,4 +265,29 @@ output "application_config_id" {
 output "application_deployment_id" {
   description = "Terraform data resource ID for application deployment"
   value       = terraform_data.application_deployment.id
+}
+
+output "application_name" {
+  description = "Application name from application module"
+  value       = module.application_config.name
+}
+
+output "application_port" {
+  description = "Application port from application module"
+  value       = module.application_config.port
+}
+
+output "application_instance_type" {
+  description = "Application instance type from application module"
+  value       = module.application_config.instance_type
+}
+
+output "application_tags" {
+  description = "Application tags from application module"
+  value       = module.application_config.tags
+}
+
+output "application_summary" {
+  description = "Complete application configuration"
+  value       = module.application_config.summary
 }
