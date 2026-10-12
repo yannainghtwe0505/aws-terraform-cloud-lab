@@ -297,3 +297,9 @@ Internet
 
 - Created an `application_config` module with a typed object input, optional tags, merged default tags, and reusable configuration outputs
 - Called the module from `dev` and added validation for ports between 1 and 65535 and non-empty application names
+
+### Day 22 — Separate staging environment
+
+- Reused the `application_config` module in `staging` with an environment configuration map for instance types and ports
+- Configured the existing S3 backend bucket with a separate `staging/terraform.tfstate` key, locking, and encryption
+- Verified staging outputs without creating AWS resources; `terraform state list` is empty because the module only computes configuration values
