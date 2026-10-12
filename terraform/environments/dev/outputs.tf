@@ -201,3 +201,58 @@ output "database_secret_arn" {
   description = "ARN of the database secret"
   value       = aws_secretsmanager_secret.db.arn
 }
+
+output "unique_applications" {
+  description = "Unique application names"
+  value       = local.unique_applications
+}
+
+output "application_list" {
+  description = "Application set converted back to a list"
+  value       = local.application_list
+}
+
+output "final_tags" {
+  description = "Merged common and application tags"
+  value       = local.final_tags
+}
+
+output "all_ports" {
+  description = "Combined public and application ports"
+  value       = local.all_ports
+}
+
+output "all_subnets" {
+  description = "Flattened subnet names"
+  value       = local.all_subnets
+}
+
+output "unique_ports" {
+  description = "Ports with duplicates removed"
+  value       = local.unique_ports
+}
+
+output "sorted_ports" {
+  description = "Ports converted to strings and sorted lexicographically"
+  value       = local.sorted_ports
+}
+
+output "service_names" {
+  description = "Service names from the service map"
+  value       = local.service_names
+}
+
+output "service_port_values" {
+  description = "Service port values"
+  value       = local.service_port_values
+}
+
+output "service_names_upper" {
+  description = "Service names converted to uppercase"
+  value       = local.service_names_upper
+}
+
+output "application_service_ports" {
+  description = "Services using application ports"
+  value       = local.application_service_ports
+}

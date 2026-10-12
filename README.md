@@ -282,3 +282,8 @@ Internet
 
 - Practiced `lookup`, conditional expressions, `try`, `coalesce`, and `contains` using environment and application settings
 - Added environment validation, an optional application name, and outputs for the computed values
+
+### Day 19 — Terraform collection functions
+
+- Practiced `toset`, `tolist`, `tomap`, `merge`, `concat`, `flatten`, `distinct`, `sort`, `keys`, and `values` in `functions.tf`
+- Combined functions with `for` expressions to uppercase service names and filter application ports, with outputs for the computed values
