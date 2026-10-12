@@ -287,3 +287,8 @@ Internet
 
 - Practiced `toset`, `tolist`, `tomap`, `merge`, `concat`, `flatten`, `distinct`, `sort`, `keys`, and `values` in `functions.tf`
 - Combined functions with `for` expressions to uppercase service names and filter application ports, with outputs for the computed values
+
+### Day 20 — Terraform dependencies and lifecycle
+
+- Used `terraform_data` resources in `lifecycle.tf` to practice explicit dependencies with `depends_on` without creating additional AWS infrastructure
+- Added examples of `create_before_destroy`, `prevent_destroy`, and `ignore_changes`, plus outputs for configuration and deployment resource IDs

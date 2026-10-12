@@ -256,3 +256,13 @@ output "application_service_ports" {
   description = "Services using application ports"
   value       = local.application_service_ports
 }
+
+output "application_config_id" {
+  description = "Terraform data resource ID for application configuration"
+  value       = terraform_data.application_config.id
+}
+
+output "application_deployment_id" {
+  description = "Terraform data resource ID for application deployment"
+  value       = terraform_data.application_deployment.id
+}
