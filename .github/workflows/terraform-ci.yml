@@ -1,0 +1,47 @@
+name: Terraform CI
+
+on:
+  pull_request:
+    paths:
+      - "terraform/**"
+      - ".github/workflows/terraform-ci.yml"
+
+  push:
+    branches:
+      - main
+    paths:
+      - "terraform/**"
+      - ".github/workflows/terraform-ci.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  terraform-quality:
+    name: Terraform Format, Validate and Test
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: terraform/modules/application_config
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.14.0"
+
+      - name: Check formatting
+        run: terraform fmt -check -recursive
+
+      - name: Initialize Terraform
+        run: terraform init -backend=false -input=false
+
+      - name: Validate Terraform
+        run: terraform validate
+
+      - name: Run Terraform tests
+        run: terraform test

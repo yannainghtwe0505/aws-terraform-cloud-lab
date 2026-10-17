@@ -316,3 +316,8 @@ Internet
 - Created a state-management lab with `terraform_data` resources for application and database configuration
 - Used `terraform plan` and `terraform destroy` to inspect the planned changes and remove the lab resources without creating AWS infrastructure
 - Practiced how Terraform state tracks the resources declared in the configuration
+
+### Day 25 — Terraform tests and GitHub Actions CI
+
+- Added `terraform test` cases for application configuration outputs, default tags, and invalid inputs
+- Added a GitHub Actions workflow to check Terraform formatting, validate the module, and run its tests on relevant pull requests and pushes to `main`
