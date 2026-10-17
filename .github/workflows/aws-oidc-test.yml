@@ -1,0 +1,47 @@
+name: AWS OIDC Authentication Test
+
+on:
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  aws-auth:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::878359978684:role/GitHubTerraformPlanRole
+          aws-region: ap-northeast-1
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.14.0"
+
+      - name: Terraform Init
+        working-directory: terraform/labs/oidc-plan
+        run: terraform init -backend=false
+
+      - name: Terraform Validate
+        working-directory: terraform/labs/oidc-plan
+        run: terraform validate
+
+      - name: Terraform Plan
+        working-directory: terraform/labs/oidc-plan
+        env:
+          TF_VAR_aws_region: ap-northeast-1
+        run: terraform plan -input=false
+
+      - name: Verify AWS identity
+        run: aws sts get-caller-identity
+
+      - name: List AWS VPCs
+        run: aws ec2 describe-vpcs --query "Vpcs[*].VpcId"

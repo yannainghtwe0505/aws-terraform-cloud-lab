@@ -321,3 +321,9 @@ Internet
 
 - Added `terraform test` cases for application configuration outputs, default tags, and invalid inputs
 - Added a GitHub Actions workflow to check Terraform formatting, validate the module, and run its tests on relevant pull requests and pushes to `main`
+
+### Day 26 — Safe Terraform plan with GitHub Actions OIDC
+
+- Configured a GitHub Actions workflow to authenticate to AWS with OIDC and an IAM role instead of long-lived AWS access keys
+- Added `terraform/labs/oidc-plan/` with data sources for the current AWS account and region; the lab reads AWS information without creating infrastructure
+- Added workflow steps to initialize, validate, and plan the lab with the backend disabled and AWS region set to `ap-northeast-1`
