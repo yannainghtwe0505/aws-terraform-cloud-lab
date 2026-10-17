@@ -69,6 +69,7 @@ To be added.
 - Output
 - Data source
 - Terraform state
+- Terraform workspaces
 - Terraform plan
 - Terraform apply
 - Terraform destroy
@@ -303,3 +304,9 @@ Internet
 - Reused the `application_config` module in `staging` with an environment configuration map for instance types and ports
 - Configured the existing S3 backend bucket with a separate `staging/terraform.tfstate` key, locking, and encryption
 - Verified staging outputs without creating AWS resources; `terraform state list` is empty because the module only computes configuration values
+
+### Day 23 — Terraform workspaces
+
+- Practiced selecting separate state with Terraform workspaces and reading the active name through `terraform.workspace`
+- Learned that workspaces do not change AWS credentials and that separate directories can provide stronger production environment separation
+- Documented workspace state behavior, including the S3 backend key layout, in [`docs/terraform-workspaces.md`](docs/terraform-workspaces.md)
