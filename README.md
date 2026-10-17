@@ -310,3 +310,9 @@ Internet
 - Practiced selecting separate state with Terraform workspaces and reading the active name through `terraform.workspace`
 - Learned that workspaces do not change AWS credentials and that separate directories can provide stronger production environment separation
 - Documented workspace state behavior, including the S3 backend key layout, in [`docs/terraform-workspaces.md`](docs/terraform-workspaces.md)
+
+### Day 24 — Terraform state management
+
+- Created a state-management lab with `terraform_data` resources for application and database configuration
+- Used `terraform plan` and `terraform destroy` to inspect the planned changes and remove the lab resources without creating AWS infrastructure
+- Practiced how Terraform state tracks the resources declared in the configuration
