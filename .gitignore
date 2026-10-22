@@ -14,3 +14,8 @@ override.tf.json
 !**/terraform.tfvars
 .terraformrc
 terraform.rc
+
+# Terraform saved plans and local state backups
+tfplan
+*.tfplan
+# State backups and recovered-state.tfstate are covered by *.tfstate and *.tfstate.* above.

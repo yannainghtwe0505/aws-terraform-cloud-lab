@@ -333,3 +333,9 @@ Internet
 - Practiced Checkov in an isolated security-scanning lab, preserving the insecure teaching example as `.tf.example` and restricting the corrected PostgreSQL rule to an application security group
 - Added a separate GitHub Actions security job to scan `terraform/environments` and a PowerShell helper for local scans
 - Confirmed the environment scan reports existing findings (98 passed checks, 46 failed); the security job currently fails on those findings, and no infrastructure was applied
+
+### Day 28 — Terraform deployment and recovery
+
+- Created a safe deployment-recovery lab using `terraform_data` with application version and environment outputs
+- Documented saved-plan review and apply, configuration reverts, failed deployments, and S3 state recovery in [`docs/terraform-deployment-recovery.md`](docs/terraform-deployment-recovery.md)
+- Added ignore rules for saved plans; local state and state backups remain excluded from Git
