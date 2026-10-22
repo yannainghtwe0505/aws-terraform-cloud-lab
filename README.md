@@ -327,3 +327,9 @@ Internet
 - Configured a GitHub Actions workflow to authenticate to AWS with OIDC and an IAM role instead of long-lived AWS access keys
 - Added `terraform/labs/oidc-plan/` with data sources for the current AWS account and region; the lab reads AWS information without creating infrastructure
 - Added workflow steps to initialize, validate, and plan the lab with the backend disabled and AWS region set to `ap-northeast-1`
+
+### Day 27 — Terraform security scanning with Checkov
+
+- Practiced Checkov in an isolated security-scanning lab, preserving the insecure teaching example as `.tf.example` and restricting the corrected PostgreSQL rule to an application security group
+- Added a separate GitHub Actions security job to scan `terraform/environments` and a PowerShell helper for local scans
+- Confirmed the environment scan reports existing findings (98 passed checks, 46 failed); the security job currently fails on those findings, and no infrastructure was applied

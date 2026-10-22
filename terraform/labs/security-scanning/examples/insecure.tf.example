@@ -1,0 +1,29 @@
+# Intentionally insecure reference for learning. Do not apply.
+terraform {
+  required_version = ">= 1.5.0"
+
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 6.0"
+    }
+  }
+}
+
+variable "vpc_id" {
+  type        = string
+  description = "VPC ID for security group examples"
+}
+
+resource "aws_security_group" "database" {
+  name   = "insecure-database-sg"
+  vpc_id = var.vpc_id
+
+  ingress {
+    description = "PostgreSQL access"
+    from_port   = 5432
+    to_port     = 5432
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
