@@ -1,0 +1,14 @@
+output "vpc_id" { value = module.networking.vpc_id }
+output "public_subnet_ids" { value = module.networking.public_subnet_ids }
+output "private_subnet_ids" { value = module.networking.private_subnet_ids }
+output "application_instance_type" { value = local.instance_type }
+output "autoscaling_group_name" { value = module.compute.name }
+output "minimum_instances" { value = local.production ? 2 : 1 }
+output "maximum_instances" { value = local.production ? 4 : 2 }
+output "database_multi_az" { value = module.rds.multi_az }
+output "https_enabled" { value = module.alb.https_enabled }
+output "alb_dns_name" { value = module.alb.dns_name }
+output "database_endpoint" { value = module.rds.address }
+output "monitoring_level" { value = local.monitoring_level }
+output "alarm_names" { value = module.monitoring.alarm_names }
+output "rds_monitoring_interval" { value = module.rds.monitoring_interval }

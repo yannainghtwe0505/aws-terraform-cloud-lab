@@ -19,3 +19,7 @@ terraform.rc
 tfplan
 *.tfplan
 # State backups and recovered-state.tfstate are covered by *.tfstate and *.tfstate.* above.
+
+*.tfplan.gpg
+terraform/environments/*/plan-metadata.json
+__pycache__/

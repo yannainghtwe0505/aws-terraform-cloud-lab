@@ -339,3 +339,12 @@ Internet
 - Created a safe deployment-recovery lab using `terraform_data` with application version and environment outputs
 - Documented saved-plan review and apply, configuration reverts, failed deployments, and S3 state recovery in [`docs/terraform-deployment-recovery.md`](docs/terraform-deployment-recovery.md)
 - Added ignore rules for saved plans; local state and state backups remain excluded from Git
+
+### Day 29 — Reusable modules and environment separation
+
+- Reorganized dev infrastructure into reusable modules, preserved networking addresses and root outputs, and added migration blocks for extracted resources
+- Added staging/prod profiles with HTTPS, Auto Scaling, configurable staging/Multi-AZ production RDS, monitoring tiers, and separate encrypted/locked S3 state keys
+- Added a reviewed-plan deployment workflow, OIDC role bootstrap requiring reviewed IAM policies, and mocked Terraform/deployment-control tests
+- Certificates, SNS topics, credentials, IAM policies/roles and GitHub approval settings remain required setup; no AWS infrastructure was applied
+- Validation passed with 14 mocked Terraform tests and 8 deployment-control tests; Checkov reported 220 passed checks and 76 findings across the expanded environment scope, so security CI remains blocked
+- Documented [module organization](docs/architecture.md), [deployment setup](docs/deployment.md), and [state separation](docs/terraform-state.md); the full architecture diagram is planned for Day 30

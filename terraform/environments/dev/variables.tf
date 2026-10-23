@@ -85,3 +85,16 @@ variable "optional_app_name" {
   type        = string
   default     = null
 }
+
+variable "enable_https" {
+  type    = bool
+  default = false
+}
+variable "certificate_arn" {
+  type    = string
+  default = null
+}
+variable "alarm_topic_arn" {
+  type    = string
+  default = null
+}

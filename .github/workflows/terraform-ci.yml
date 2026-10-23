@@ -5,6 +5,8 @@ on:
     paths:
       - "terraform/**"
       - ".github/workflows/terraform-ci.yml"
+      - ".github/workflows/terraform-deploy.yml"
+      - "scripts/check-deployment-controls.py"
 
   push:
     branches:
@@ -12,6 +14,8 @@ on:
     paths:
       - "terraform/**"
       - ".github/workflows/terraform-ci.yml"
+      - ".github/workflows/terraform-deploy.yml"
+      - "scripts/check-deployment-controls.py"
 
 permissions:
   contents: read
@@ -21,9 +25,22 @@ jobs:
     name: Terraform Format, Validate and Test
     runs-on: ubuntu-latest
 
+    strategy:
+      fail-fast: false
+      matrix:
+        directory:
+          - terraform/modules/application_config
+          - terraform/modules/networking
+          - terraform/environments/dev
+          - terraform/environments/staging
+          - terraform/environments/prod
+          - terraform/modules/deployment-access
+          - terraform/modules/alb
+          - terraform/bootstrap/deployment-access
+
     defaults:
       run:
-        working-directory: terraform/modules/application_config
+        working-directory: ${{ matrix.directory }}
 
     steps:
       - name: Checkout repository
@@ -68,3 +85,13 @@ jobs:
             -d terraform/environments \
             --framework terraform \
             --compact
+
+  deployment-control-tests:
+    name: Deployment control tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -B -m unittest discover -s scripts/tests -v

@@ -1,43 +1,7 @@
-# Terraform Modules
+# Terraform modules
 
-## Purpose
+Reusable module implementations live in `terraform/modules`; environment roots pass their inputs and consume outputs. See the [module architecture and migration guide](architecture.md) for the full module inventory, dependency flow, and migration procedure.
 
-Terraform modules allow infrastructure configurations to be reused across environments.
+Dev now declares infrastructure exclusively through child modules. Its `module.vpc` label references the renamed `networking` directory to preserve existing networking state addresses. All other extracted resources have explicit `moved` blocks, and the root output contract is retained.
 
-## Current Structure
-
-```
-terraform/
-├── modules/
-│   └── vpc/
-│
-└── environments/
-    └── dev/
-```
-
-## VPC Module
-
-The VPC module is responsible for the network foundation.
-
-It receives configuration through variables and exposes important resource information through outputs.
-
-### Inputs
-
-- vpc_cidr
-- name_prefix
-- environment
-
-### Outputs
-
-- vpc_id
-- vpc_cidr
-
-## Module Flow
-
-```
-Environment
-→ Module Input
-→ VPC Module
-→ AWS Resources
-→ Module Output
-```
+Staging retains `application_config` and adds the shared `environment-stack` module for its AWS profile. Production uses the same shared stack with its own inputs and backend key. Terraform labs remain isolated learning roots rather than deployment environments. See [deployment prerequisites](deployment.md) before enabling the new stacks.
