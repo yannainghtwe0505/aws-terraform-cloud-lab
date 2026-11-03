@@ -21,5 +21,8 @@ tfplan
 # State backups and recovered-state.tfstate are covered by *.tfstate and *.tfstate.* above.
 
 *.tfplan.gpg
+
+# Generated `terraform graph` output
+graph.dot
 terraform/environments/*/plan-metadata.json
 __pycache__/

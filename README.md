@@ -54,7 +54,14 @@ Private RDS
 
 ## Terraform
 
-To be added.
+Repository layout, root/child modules, module dependency graph, variable flow and CI/CD pipeline: [`docs/architecture/project-structure.md`](docs/architecture/project-structure.md)
+
+| Directory | Role |
+| --- | --- |
+| `terraform/environments/{dev,staging,prod}` | Deployable roots, one S3 state key each |
+| `terraform/modules/*` | Reusable child modules; `environment-stack` composes them for staging/prod |
+| `terraform/bootstrap/deployment-access` | One-time root for GitHub OIDC plan/apply roles |
+| `terraform/labs/*` | Isolated learning roots with local state |
 
 ## Application
 
